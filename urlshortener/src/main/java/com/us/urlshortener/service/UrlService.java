@@ -19,7 +19,11 @@ public class UrlService {
     public String shortenUrl(String originalUrl, Integer userId, String customCode) {
         Url url = new Url();
         url.setOriginalUrl(originalUrl);
-        url.setShortCode(customCode != null ? customCode : UrlUtil.generateRandomCode());
+        String shortCode = (customCode != null && !customCode.trim().isEmpty())
+                ? customCode.trim()
+                : UrlUtil.generateRandomCode();
+
+        url.setShortCode(shortCode);
         url.setUserId(userId);
         urlDao.save(url);
         return url.getShortCode();

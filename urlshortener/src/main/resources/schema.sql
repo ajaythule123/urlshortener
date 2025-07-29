@@ -1,0 +1,12 @@
+CREATE TABLE urls (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  original_url TEXT NOT NULL,
+  short_code VARCHAR(100) NOT NULL UNIQUE,
+  user_id INT
+);
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
